@@ -25,12 +25,12 @@ class Worker:
         return str(self.task_list)
 
 class Task:
-    def __init__(self, name, task_type, start, end, nb_workers):
+    def __init__(self, number, task_type, start, end, nb_workers):
         self.start = start
         self.end = end
         self.nb_workers = nb_workers
         self.current_nb_workers = 0
-        self.name = name
+        self.name = task_type + "_" + number
         self.task_type = task_type
 
     def addworker(self):
@@ -53,14 +53,13 @@ class Solver:
 
     def solve(self):
         for task in self.task_list:
-            workers_sorted = sorted(self.workers.values(), key = lambda key: key.preferences[task.task_type])
+            workers_sorted = reversed(sorted(self.workers.values(), key = lambda key: key.preferences[task.task_type]))
             for worker in workers_sorted:
                 if not task.is_full() and worker.canAccept(task):
                     worker.addTask(task)
         reste = [task for task in self.task_list if task.nb_workers != task.current_nb_workers]
-        return str(self.workers) + "_" + str(reste)
+        return self.workers, reste
 now = datetime.datetime.now()
-
 tasks = []
 names = ["Toto", "Tata", "Titi"]
 types = ["Vaisselle", "Menage"]
