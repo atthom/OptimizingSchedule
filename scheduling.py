@@ -1,9 +1,14 @@
 import datetime
 
 class Worker:
-    def __init__(self, name, type_list, preferences=None):
+    def __init__(self, name, type_list, unavailable_periodes=None, preferences=None):
         self.name = name
         self.task_list = []
+        if unavailable_periodes:
+            self.unavailable_periodes = unavailable_periodes
+        else:
+            self.unavailable_periodes = []
+
         if preferences:
             self.preferences = preferences
         else:
@@ -16,6 +21,10 @@ class Worker:
         self.task_list.append(task.addworker())
 
     def canAccept(self, try_task):
+        for periode in self.unavailable_periodes:
+            if periode[0] <= try_task.start < periode[1] or periode[0] < try_task.end < periode[1]:
+                return False
+
         for task in self.task_list:
             if task.start <= try_task.start < task.end or task.start < try_task.end < task.end:
                 return False
@@ -81,7 +90,3 @@ for i in range(7):
         tasks.append(Task(name, types[1], current_start, current_end, 2))
 
 solver = Solver(tasks, len(types), workers)
-print(solver.solve())
-
-
-
