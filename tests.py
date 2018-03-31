@@ -2,6 +2,7 @@ import unittest
 import datetime
 from scheduling import Worker, Solver, Task
 
+now = datetime.datetime.now()
 
 def simple_setup():
     now = datetime.datetime.now()
@@ -20,7 +21,7 @@ def simple_setup():
     
 types = ["Vaisselle", "Menage"]
 def setup():
-    now = datetime.datetime.now()
+    
     tasks = []
     names = ["Toto", "Tata", "Titi"]
     types = ["Vaisselle", "Menage"]
@@ -59,7 +60,15 @@ class Senario1(unittest.TestCase):
         good_answer = "({'Toto': [], 'Tata': [Menage_Task_1, Menage_Task_3, Menage_Task_5], 'Titi': [Vaisselle_Task_0, Menage_Task_1, Vaisselle_Task_2, Menage_Task_3, Vaisselle_Task_4, Menage_Task_5, Vaisselle_Task_6]}, [])"      
         self.assertEqual(str(answer), good_answer)    
 
-
+    def test_unavailable(self):
+        workers, tasks = setup()
+        preference1 = {"Vaisselle":0, "Menage": 2}
+        workers[1].preferences = preference1
+        unavailable= [[now,now  + datetime.timedelta(days=1)], [now + datetime.timedelta(days=4), now + datetime.timedelta(days=6)]]
+        workers[2].unavailable_periodes = unavailable
+        answer = Solver(tasks, 2, workers).solve()
+        good_answer = "({'Toto': [Menage_Task_3, Vaisselle_Task_4], 'Tata': [Menage_Task_1, Menage_Task_3, Menage_Task_5], 'Titi': [Vaisselle_Task_0, Menage_Task_1, Vaisselle_Task_2, Menage_Task_5, Vaisselle_Task_6]}, [])"      
+        self.assertEqual(str(answer), good_answer)    
 
 if __name__ == '__main__':
     unittest.main() 
