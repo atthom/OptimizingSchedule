@@ -1,13 +1,11 @@
 import datetime
 
 class Worker:
-    def __init__(self, name, type_list, unavailable_periodes=None, preferences=None):
+    def __init__(self, name, type_list, unavailable_periodes=[], preferences=None):
         self.name = name
         self.task_list = []
-        if unavailable_periodes:
-            self.unavailable_periodes = unavailable_periodes
-        else:
-            self.unavailable_periodes = []
+        self.charge = 0
+        self.unavailable_periodes = unavailable_periodes
 
         if preferences:
             self.preferences = preferences
@@ -18,6 +16,7 @@ class Worker:
                 self.preferences[type_task] = avg
 
     def addTask(self, task):
+        self.charge += task.difficulties
         self.task_list.append(task.addworker())
 
     def canAccept(self, try_task):
@@ -34,13 +33,14 @@ class Worker:
         return str(self.task_list)
 
 class Task:
-    def __init__(self, number, task_type, start, end, nb_workers):
+    def __init__(self, number, task_type, start, end, nb_workers, difficulties=1):
         self.start = start
         self.end = end
         self.nb_workers = nb_workers
         self.current_nb_workers = 0
         self.name = task_type + "_" + number
         self.task_type = task_type
+        self.difficulties = difficulties
 
     def addworker(self):
         self.current_nb_workers += 1
@@ -62,31 +62,10 @@ class Solver:
 
     def solve(self):
         for task in self.task_list:
-            workers_sorted = reversed(sorted(self.workers.values(), key = lambda key: key.preferences[task.task_type]))
+            workers_sorted = sorted(self.workers.values(), key = lambda item: item.preferences[task.task_type], reverse=True)
+            workers_sorted = sorted(workers_sorted, key = lambda item: item.charge)
             for worker in workers_sorted:
                 if not task.is_full() and worker.canAccept(task):
                     worker.addTask(task)
         reste = [task for task in self.task_list if task.nb_workers != task.current_nb_workers]
         return self.workers, reste
-now = datetime.datetime.now()
-tasks = []
-names = ["Toto", "Tata", "Titi"]
-types = ["Vaisselle", "Menage"]
-
-preference1 = {"Vaisselle":0, "Menage": 2}
-workers = [Worker(name, types) for name in names]
-workers[1].preferences = preference1
-
-offset = datetime.timedelta(days=1)
-
-for i in range(7):
-    current_start = now + offset
-    current_end = current_start + datetime.timedelta(days=1)
-    offset += datetime.timedelta(days=1)
-    name = "Task_" + str(i)
-    if i % 2 == 0:
-        tasks.append(Task(name, types[0], current_start, current_end, 1))
-    else:        
-        tasks.append(Task(name, types[1], current_start, current_end, 2))
-
-solver = Solver(tasks, len(types), workers)
