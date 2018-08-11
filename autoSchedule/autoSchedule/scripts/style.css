@@ -1,0 +1,19 @@
+
+label {
+    margin: 10;
+}
+
+.row div {
+    display: inline;
+}
+
+.row div * {
+    padding: 0px;
+    margin-top: 10px;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
