@@ -1,0 +1,65 @@
+{% include "generic/header.html" with active="welcome" %}
+
+<div class="jumbotron">
+    <h2>Auto Scheduler !</h2>
+
+    <form method="post" class="form">
+        {% csrf_token %}
+        <h3>Session :</h3>
+        <div class="container">
+            <div class="form-group col-md-2">
+                <label for="start">Start:</label>
+                {{sessionform.start}} 
+            </div>
+            <div class="form-group col-md-2">
+                <label for="end">End:</label>  
+                {{sessionform.end}}
+            </div>
+        </div>
+        
+
+        <h3>Tasks :</h3>
+        {% for tf in taskFormSet %}
+        <div class="container">
+            <div class="col-md-2">
+                <label for="task_type">Name of task:</label> 
+                {{tf.task_type}} 
+            </div>
+            <div class="col-md-2" >
+                <label for="nb_workers">Number of workers:</label>
+                {{tf.nb_workers}} 
+            </div>
+            <div class="col-md-2">
+                <label for="start">Start:</label>
+                 {{tf.start}}    
+            </div>
+            <div class="col-md-2">
+                <label for="duration">Duration:</label>
+                 {{tf.duration}} 
+            </div>
+            <div class="col-md-2">
+                <label for="each_days">Each days:</label>
+                 {{tf.each_days}} 
+            </div>
+        </div>
+        {% endfor %}
+
+
+        <h3>Workers :</h3>
+        {% for wf in workerFormSet %}
+        <div class="container">
+            <div class="col-md-2">
+                <label for="task_type">Name :</label> 
+                {{ wf.name }}
+            </div>
+        </div>
+        {% endfor %}
+        
+        <div class="container text-center">
+            <input type="submit" value="Valider" class="btn btn-success"/>
+        </div>
+        
+    </form>
+
+</div>
+{% include "generic/footer.html" %}
