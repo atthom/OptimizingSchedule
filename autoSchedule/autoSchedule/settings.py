@@ -49,6 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'easy_select2',
+    'jquery',
+    'djangoformsetjs',
+    'bootstrapform',
+    'fontawesome'
 ]
 
 MIDDLEWARE = [

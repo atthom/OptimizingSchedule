@@ -8,19 +8,17 @@
         <h3>Session :</h3>
         <div class="container">
             <div class="form-group col-md-2">
-                <label for="start">Start:</label>
-                {{sessionform.start}} 
-            </div>
-            <div class="form-group col-md-2">
-                <label for="end">End:</label>  
-                {{sessionform.end}}
+                <label for="session_range">Range:</label>
+                {{sessionform.session_range}} 
             </div>
         </div>
         
 
         <h3>Tasks :</h3>
+
+        {{ taskFormSet.management_form }}
         {% for tf in taskFormSet %}
-        <div class="container">
+        <div class="container taskFormSet">
             <div class="col-md-2">
                 <label for="task_type">Name of task:</label> 
                 {{tf.task_type}} 
@@ -44,10 +42,10 @@
         </div>
         {% endfor %}
 
-
         <h3>Workers :</h3>
+        {{ workerFormSet.management_form }}
         {% for wf in workerFormSet %}
-        <div class="container">
+        <div class="container workerFormSet">
             <div class="col-md-2">
                 <label for="task_type">Name :</label> 
                 {{ wf.name }}
@@ -62,4 +60,67 @@
     </form>
 
 </div>
+{% load static %}
+
+<script src="{% static "jquery.formset.js" %}"></script>
+<script>   
+    $(function() {
+        $( ".datepicker").daterangepicker({
+            "showDropdowns": true,
+            "minYear": 2017,
+            "locale": {
+                "format": "DD/MM/YYYY",
+                "separator": " - ",
+                "applyLabel": "Apply",
+                "cancelLabel": "Cancel",
+                "fromLabel": "From",
+                "toLabel": "To",
+                "customRangeLabel": "Custom",
+                "weekLabel": "W",
+                "daysOfWeek": [
+                    "Su",
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa"
+                ],
+                "monthNames": [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ],
+                "firstDay": 1
+            }
+        });
+
+        $('.taskFormSet').formset({
+            prefix: '{{ taskFormSet.prefix }}',
+            formCssClass: 'dynamic-taskFormSet',           
+            deleteCssClass: 'delete-row',
+            deleteText: 'Remove',
+            addCssClass: 'add-row btn btn-success',
+            addText: 'Add'
+        });
+        $('.workerFormSet').formset({
+            prefix: '{{ workerFormSet.prefix }}',
+            formCssClass: 'dynamic-taskFormSet',         
+            deleteCssClass: 'delete-row',
+            deleteText: 'Remove',
+            addCssClass: 'add-row btn btn-success',
+            addText: 'Add'
+        });
+    });
+</script>
+
 {% include "generic/footer.html" %}
