@@ -3,6 +3,8 @@ from django import forms
 from easy_select2 import Select2Multiple, Select2Mixin, select2_modelform
 from django.forms import formset_factory
 
+class SessionForm(forms.Form):
+    session_range = forms.DateField(widget=forms.TextInput(attrs= { 'class':'form-control datepicker'}))
 
 class WorkerForm(forms.Form):
     name = forms.CharField(max_length=50, widget=forms.TextInput({"class": "form-control"}))
@@ -17,9 +19,6 @@ class TaskForm(forms.Form):
     #difficulty = forms.IntegerField(widget=forms.TextInput({"class": "form-control input-md"}))
     each_days = forms.BooleanField(widget=forms.TextInput({"class": "form-control input-sm"}))
 
-class SessionForm(forms.Form):
-    start = forms.DateField(widget=forms.TextInput({"class": "form-control input-sm"}))
-    end = forms.DateField(widget=forms.TextInput({"class": "form-control input-sm"}))
 
 
 TaskFormSet = formset_factory(TaskForm)
