@@ -12,3 +12,5 @@ autoSchedule/static/css/
 autoSchedule/static/
 
 autoSchedule/autoSchedule/scripts/fonts/
+
+*.pyc
