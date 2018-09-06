@@ -52,7 +52,10 @@ INSTALLED_APPS = [
     'jquery',
     'djangoformsetjs',
     'bootstrapform',
-    'fontawesome'
+    'fontawesome',
+    'material',
+    'material.frontend',
+    'viewflow',
 ]
 
 MIDDLEWARE = [

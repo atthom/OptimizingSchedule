@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
     {% load static %}
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Auto Scheduler !</title>
@@ -15,10 +14,19 @@
     <script src="{% static "jquery.min.js" %}"></script>
     <script src="{% static "bootstrap.min.js" %}"></script>
     <script src="{% static "moment-with-locales.js" %}"></script>
+    <script src="{% static "bootstrap-datepicker.min.js" %}"></script>
+    <script src="{% static "bootstrap-datetimepicker.min.js" %}"></script>
+    <script src="{% static "bootstrap-duration-picker.js" %}"></script>
+    <link rel="stylesheet" href="{% static "css/datepicker.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap-duration-picker.css" %}">
+
+    {% include 'material/includes/material_css.html' %}
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
+    {% load material_form %} 
     
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-        
     {{ form.media }}
 </head>
 

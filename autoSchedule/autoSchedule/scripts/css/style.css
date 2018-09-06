@@ -59,3 +59,7 @@ input[type="submit"] {
     margin-left: 40px;
     margin-top: 22px;
 }
+
+.example {
+    margin: 20px;
+}
