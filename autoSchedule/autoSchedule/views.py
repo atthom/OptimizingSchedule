@@ -9,3 +9,13 @@ def frontpage(request):
     
     ctx = {"sessionform":sessionform, "taskFormSet":taskFormSet, "workerFormSet": workerFormSet}
     return render(request, 'frontpage.html', context=ctx)
+
+
+
+def frontpage2(request):
+    sessionform = SessionForm(request.POST or None, prefix="session")
+    taskFormSet = TaskFormSet(request.POST or None, prefix="task")
+    workerFormSet = WorkerFormSet(request.POST or None, prefix="worker")
+    
+    ctx = {"sessionform":sessionform, "taskFormSet":taskFormSet, "workerFormSet": workerFormSet}
+    return render(request, 'frontpage2.html', context=ctx)

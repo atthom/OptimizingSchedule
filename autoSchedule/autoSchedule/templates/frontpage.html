@@ -6,9 +6,9 @@
     <form method="post" class="form">
         {% csrf_token %}
         
-        <div class="form-group">
+        <div class="form-group bmd-form-group">
             <h4>Session :</h4>
-            <label for="session_range">Range:</label>
+            <label for="session_range" class="bmd-label-floating">Range:</label>
             {{sessionform.session_range}} 
         </div>
         
