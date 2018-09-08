@@ -1,0 +1,64 @@
+{% load static %}
+
+<footer class="footer" data-background-color="black">
+    <div class="container">
+      <nav class="float-left">
+        <ul>
+          <li>
+            <a href="https://www.creative-tim.com"> Creative Tim </a>
+          </li>
+          <li>
+            <a href="https://creative-tim.com/presentation"> About Us</a>
+          </li>
+          <li>
+            <a href="http://blog.creative-tim.com"> Blog </a>
+          </li>
+          <li>
+            <a href="https://www.creative-tim.com/license"> Licenses</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright float-right">
+        &copy;
+        <script> document.write(new Date().getFullYear()) </script>
+        , made with a lot of <i class="material-icons">local_pizza</i> by <strong>Chronos</strong>.
+      </div>
+    </div>
+  </footer>
+  <!--   Core JS Files   -->
+  <script src="{% static "jquery.min.js" %}"></script><!-- Compiled and minified JavaScript -->
+  <script src="{% static '/assets/js/core/popper.min.js' %}" type="text/javascript"></script>
+  
+  <script src="{% static '/assets/js/core/bootstrap-material-design.min.js' %}" type="text/javascript"></script>
+  <script src="{% static '/assets/js/material-kit.js' %}" type="text/javascript"></script>
+ 
+  <script src="{% static "moment-with-locales.js" %}"></script>
+  <script src="{% static "bootstrap-datepicker.min.js" %}"></script>
+  <script src="{% static "bootstrap-datetimepicker.min.js" %}"></script>
+  <script src="{% static "bootstrap-duration-picker.js" %}"></script>
+  <script src="{% static "jquery.formset.js" %}"></script>
+  <script src="{% static '/assets/js/plugins/nouislider.min.js' %}" type="text/javascript"></script>
+  <script src="{% static '/assets/js/plugins/jquery.sharrre.js' %}" type="text/javascript"></script>
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('.taskFormSet').formset({
+            prefix: '{{ taskFormSet.prefix }}',
+            formCssClass: 'dynamic-taskFormSet',           
+            deleteCssClass: 'btn btn-danger btn-fab btn-round',
+            deleteText: '<i class="large material-icons">clear</i>',
+            addCssClass: 'btn btn-primary btn-fab btn-round',
+            addText: '<i class="large material-icons">add</i>'
+      });
+      $('.workerFormSet').formset({
+            prefix: '{{ workerFormSet.prefix }}',
+            formCssClass: 'dynamic-taskFormSet',         
+            deleteCssClass: 'btn btn-danger btn-fab btn-round',
+            deleteText: '<i class="large material-icons">clear</i>',
+            addCssClass: 'btn btn-primary btn-fab btn-round',
+            addText: '<i class="large material-icons">add</i>'
+      });
+    });
+  </script>
