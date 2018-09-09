@@ -62,17 +62,17 @@
                 </ul>
                 <h4>Example: 
                     The <strong>Dishwashing</strong> need <strong>2 people</strong> 
-                    <strong>at 1pm</strong> during <strong>30 min</strong> <strong>each days</strong>.</h4>
+                    <strong>Monday at 1pm</strong> during <strong>30 min</strong> <strong>each days</strong>.</h4>
             </div>
         
             {{ taskFormSet.management_form }}
             {% for tf in taskFormSet %}
 
             <div class="taskFormSet form-group bmd-form-group row">
-                <div class="input-group col-md-2 no-padding">
+                <div class="input-group col-md-2">
                     {{tf.task_type}} 
                 </div>
-                <div class="input-group col-md-2 no-padding">
+                <div class="input-group col-md-2">
                     <div class="input-group-prepend ">
                         <span class="input-group-text lt-padding">
                             <i class="material-icons">group</i>
@@ -80,7 +80,7 @@
                     </div>
                     {{tf.nb_workers}} 
                 </div>
-                <div class="input-group col-md-2 no-padding">
+                <div class="input-group col-md-2">
                     <div class="input-group-prepend">
                         <span class="input-group-text lt-padding">
                             <i class="material-icons">date_range</i>
@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 {% endfor %}
-                
+
                 <div class="text-center">
                   <button class="btn btn-success waves-effect waves-light" type="submit" name="action">Submit
                     <i class="material-icons right">send</i>

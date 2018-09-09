@@ -16,11 +16,11 @@ class TaskForm(forms.Form):
     task_type = forms.CharField(widget=
         forms.TextInput({"class": "form-control", 'placeholder': 'Task\'s name'}))
     nb_workers = forms.IntegerField(widget=
-        forms.TextInput({"class": "form-control input-sm", 'placeholder': 'People needed'}))
+        forms.NumberInput({"class": "form-control input-sm", 'placeholder': 'People needed'}))
     start = forms.DateField(widget=
-        forms.TextInput({"class": "form-control input-sm", 'placeholder': 'Start'}))
+        forms.TextInput({"class": "form-control input-sm date_time", 'placeholder': 'Start'}))
     duration = forms.DurationField(widget=
-    forms.TextInput({"class": "form-control input-sm", 'placeholder': 'Duration'}))
+    forms.TextInput({"class": "form-control input-sm time", 'placeholder': 'Duration'}))
     #difficulty = forms.IntegerField(widget=forms.TextInput({"class": "form-control input-md"}))
     each_days = forms.BooleanField()
 

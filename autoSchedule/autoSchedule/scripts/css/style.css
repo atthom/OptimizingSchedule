@@ -4,7 +4,7 @@
     margin: 0 !important;
 }
 
-.delete-row  {
+.delete-row {
     border-radius: 50%;
     cursor: pointer;
     font-size: 26px;
@@ -38,3 +38,10 @@
 .delete-row:hover {
     color: #fff;
 }
+
+
+.datepicker.dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    width: auto;
+   }
