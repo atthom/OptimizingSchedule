@@ -22,9 +22,8 @@
     <div class="section section-basic">
       <div class="container">
         <div class="title">
-          <h2>Basic Elements</h2>
+            <h3>Auto-assign tasks to peoples for an equal share of work</h3>
         </div>
-        
         <form method="post" class="form">
             {% csrf_token %}
             <h3>Session :</h3>
@@ -110,7 +109,8 @@
                 {% endfor %}
 
                 <div class="text-center">
-                  <button class="btn btn-success waves-effect waves-light" type="submit" name="action">Submit
+                  <button class="btn btn-success waves-effect waves-light" type="submit" name="action">
+                    Schedule !
                     <i class="material-icons right">send</i>
                   </button>
                 </div>
