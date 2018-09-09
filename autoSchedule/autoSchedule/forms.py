@@ -16,7 +16,7 @@ class TaskForm(forms.Form):
     task_type = forms.CharField(widget=
         forms.TextInput({"class": "form-control", 'placeholder': 'Task\'s name'}))
     nb_workers = forms.IntegerField(widget=
-        forms.NumberInput({"class": "form-control input-sm", 'placeholder': 'People needed'}))
+        forms.NumberInput({"class": "form-control input-sm", 'placeholder': 'Nb of ppl needed'}))
     start = forms.DateField(widget=
         forms.TextInput({"class": "form-control input-sm date_time", 'placeholder': 'Start'}))
     duration = forms.DurationField(widget=

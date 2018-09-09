@@ -4,6 +4,11 @@
     margin: 0 !important;
 }
 
+.lt-padding {
+    padding: 5 !important;
+    margin: 5 !important;
+}
+
 .delete-row {
     border-radius: 50%;
     cursor: pointer;
@@ -44,4 +49,4 @@
     visibility: visible;
     opacity: 1;
     width: auto;
-   }
+}
