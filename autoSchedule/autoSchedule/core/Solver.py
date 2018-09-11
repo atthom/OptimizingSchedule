@@ -14,7 +14,8 @@ class Solver:
             workers_sorted = sorted(self.workers.values(), key = lambda item: item.preferences[task.task_type], reverse=True)
             workers_sorted = sorted(workers_sorted, key = lambda item: item.charge)
             for worker in workers_sorted:
-                if not task.is_full() and worker.canAccept(task):
+                if task.not_full() and worker.canAccept(task):
                     worker.addTask(task)
+            print(task, task.nb_workers, task.current_nb_workers)
         rest = [task for task in self.task_list if task.nb_workers != task.current_nb_workers]
         return self.workers, rest

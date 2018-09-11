@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from .core.Solver import Solver
 from .core.Task import Task
@@ -17,8 +17,9 @@ def launch(session_range, worker_names, str_tasks):
     all_tasks = []
     
     for t in str_tasks:
+        one_day = timedelta(days=1)
         for i in range(delta_days):
-            start = datetime.strptime(t[2], '%d/%m/%Y %H:%M')
+            start = datetime.strptime(t[2], '%d/%m/%Y %H:%M') + one_day * i
             end = start + t[3]
             task = Task(i, t[0], start, end, t[1])
             all_tasks.append(task)
@@ -26,6 +27,17 @@ def launch(session_range, worker_names, str_tasks):
                 break
     solver = Solver(all_tasks, len(all_types), workers)
     true_workers, rest = solver.solve()
+
+    for w in all_tasks:
+        break
+        print(w)
+
+    print("task taken")
     for w in list(true_workers.values()):
+        break
+        print(w)
+    
+    print("task not taken")
+    for w in rest:
         print(w)
 
