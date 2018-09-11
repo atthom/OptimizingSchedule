@@ -1,3 +1,5 @@
+
+
 class Worker:
     def __init__(self, name, type_list, unavailable_periodes=[], preferences=None):
         self.name = name
@@ -28,4 +30,4 @@ class Worker:
         return True
 
     def __repr__(self):
-        return str(self.task_list)
+        return str({"Worker": self.name, "task_list": self.task_list, "charge" : self.charge})

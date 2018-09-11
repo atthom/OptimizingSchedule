@@ -1,3 +1,6 @@
+
+
+
 class Solver:
     def __init__(self, task_list, nb_types, worker_list):
         self.workers = dict()
@@ -13,5 +16,5 @@ class Solver:
             for worker in workers_sorted:
                 if not task.is_full() and worker.canAccept(task):
                     worker.addTask(task)
-        reste = [task for task in self.task_list if task.nb_workers != task.current_nb_workers]
-        return self.workers, reste
+        rest = [task for task in self.task_list if task.nb_workers != task.current_nb_workers]
+        return self.workers, rest
