@@ -16,7 +16,7 @@ class Worker:
                 self.preferences[type_task] = avg
 
     def addTask(self, task):
-        self.charge += task.difficulties
+        self.charge += task.difficulty
         self.task_list.append(task.addworker())
 
     def canAccept(self, try_task):
@@ -30,4 +30,4 @@ class Worker:
         return True
 
     def __repr__(self):
-        return str({"Worker": self.name, "task_list": self.task_list, "charge" : self.charge})
+        return str({"Worker": self.name, "task_list_size": len(self.task_list), "charge" : self.charge})

@@ -18,8 +18,9 @@ def frontpage2(request):
             nb_workers = task.cleaned_data["nb_workers"]
             start = task.cleaned_data["start"]
             duration = task.cleaned_data["duration"]
+            difficulty = task.cleaned_data["difficulty"]
             each_days = task.cleaned_data["each_days"]
-            all_tasks.append((task_type, nb_workers, start, duration, each_days))
+            all_tasks.append((task_type, nb_workers, start, duration, difficulty, each_days))
 
         launch(session_range, worker_names, all_tasks)
 

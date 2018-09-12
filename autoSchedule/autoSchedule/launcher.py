@@ -21,7 +21,7 @@ def launch(session_range, worker_names, str_tasks):
         for i in range(delta_days):
             start = datetime.strptime(t[2], '%d/%m/%Y %H:%M') + one_day * i
             end = start + t[3]
-            task = Task(i, t[0], start, end, t[1])
+            task = Task(i, t[0], start, end, t[1], difficulty=t[4])
             all_tasks.append(task)
             if t[-1] == False:
                 break
