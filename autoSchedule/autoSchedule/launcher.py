@@ -28,16 +28,11 @@ def launch(session_range, worker_names, str_tasks):
     solver = Solver(all_tasks, len(all_types), workers)
     true_workers, rest = solver.solve()
 
-    for w in all_tasks:
-        break
-        print(w)
-
-    print("task taken")
+    print("task taken:")
     for w in list(true_workers.values()):
-        break
         print(w)
     
-    print("task not taken")
+    print("task not taken:")
     for w in rest:
         print(w)
 
