@@ -68,7 +68,7 @@
             {% for tf in taskFormSet %}
 
             <div class="taskFormSet form-group bmd-form-group row">
-                <div class="input-group col-md-2">
+                <div class="input-group task_type col-md-2">
                     {{tf.task_type}} 
                 </div>
                 <div class="input-group col-md-1">
@@ -109,6 +109,12 @@
                 <div class="workerFormSet form-group bmd-form-group row">
                     <div class="input-group col-md-2">
                         {{ wf.name }}
+                    </div>
+                    <div class="input-group col-md-8">
+                        Preferences:
+                        <ul class="mdc-list preferences list-inline" aria-orientation="horizontal">
+                            <li class="btn btn-info 0">_</li>
+                        </ul>
                     </div>
                 </div>
                 {% endfor %}

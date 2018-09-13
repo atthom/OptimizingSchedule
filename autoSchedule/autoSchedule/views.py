@@ -23,7 +23,6 @@ def frontpage2(request):
             all_tasks.append((task_type, nb_workers, start, duration, difficulty, each_days))
 
         launch(session_range, worker_names, all_tasks)
-
     else:
         print(sessionform.errors)
         print(taskFormSet.errors)

@@ -19,3 +19,4 @@ class Solver:
             print(task, task.nb_workers, task.current_nb_workers)
         rest = [task for task in self.task_list if task.nb_workers != task.current_nb_workers]
         return self.workers, rest
+    
