@@ -26,7 +26,7 @@ def launch(session_range, worker_names, str_tasks):
             if t[-1] == False:
                 break
     solver = Solver(all_tasks, len(all_types), workers)
-    true_workers, rest = solver.solve()
+    return solver.solve()
 
     print("task taken:")
     for w in list(true_workers.values()):

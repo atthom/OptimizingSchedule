@@ -10,6 +10,7 @@ class SessionForm(forms.Form):
 class WorkerForm(forms.Form):
     name = forms.CharField(max_length=50, widget=forms.TextInput({"class": "form-control", 'placeholder': 'Worker\'s name'}))
     # self.unavailable_periodes = unavailable_periodes
+    with_preferences = forms.BooleanField(required=False,initial=False)
     # preferences
 
 class TaskForm(forms.Form):

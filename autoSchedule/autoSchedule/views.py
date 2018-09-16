@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from .forms import *
 from .launcher import launch 
 
-def frontpage2(request):
+def frontpage(request):
     sessionform = SessionForm(request.POST or None, prefix="session")
     taskFormSet = TaskFormSet(request.POST or None, prefix="task")
     workerFormSet = WorkerFormSet(request.POST or None, prefix="worker")
@@ -22,10 +22,17 @@ def frontpage2(request):
             each_days = task.cleaned_data["each_days"]
             all_tasks.append((task_type, nb_workers, start, duration, difficulty, each_days))
 
-        launch(session_range, worker_names, all_tasks)
+        true_workers, rest = launch(session_range, worker_names, all_tasks)
+        print("task taken:")
+        for w in list(true_workers.values()):
+            print(w)
+        
+        print("task not taken:")
+        for w in rest:
+            print(w)
     else:
         print(sessionform.errors)
         print(taskFormSet.errors)
         print(workerFormSet.errors)
     ctx = {"sessionform":sessionform, "taskFormSet":taskFormSet, "workerFormSet": workerFormSet}
-    return render(request, 'frontpage2.html', context=ctx)
+    return render(request, 'frontpage.html', context=ctx)
