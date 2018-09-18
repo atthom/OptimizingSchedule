@@ -30,6 +30,14 @@ def frontpage(request):
         print("task not taken:")
         for w in rest:
             print(w)
+        
+        print("all task:")
+        for t in all_tasks:
+            pass
+            print(t)
+
+        ctx = {"true_workers": true_workers, "rest":rest}
+        return render(request, 'resultpage.html', context=ctx)
     else:
         print(sessionform.errors)
         print(taskFormSet.errors)
