@@ -25,8 +25,7 @@ def launch(session_range, worker_names, str_tasks):
             all_tasks.append(task)
             if t[-1] == False:
                 break
-    solver = Solver(all_tasks, len(all_types), workers)
-    return solver.solve()
+    return Solver(all_tasks, len(all_types), workers).solve()
 
     
 

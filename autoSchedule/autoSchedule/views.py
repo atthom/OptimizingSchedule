@@ -24,7 +24,7 @@ def frontpage(request):
 
         true_workers, rest = launch(session_range, worker_names, all_tasks)
         print("task taken:")
-        for w in list(true_workers.values()):
+        for w in true_workers.values():
             print(w)
         
         print("task not taken:")
@@ -35,8 +35,10 @@ def frontpage(request):
         for t in all_tasks:
             pass
             print(t)
-
-        ctx = {"true_workers": true_workers, "rest":rest}
+        true_workers = list(true_workers.values())
+        all_tasks = []
+        [all_tasks.extend(worker.task_list) for worker in true_workers]
+        ctx = {"true_workers": true_workers, "rest":rest, "all_tasks":all_tasks}
         return render(request, 'resultpage.html', context=ctx)
     else:
         print(sessionform.errors)
